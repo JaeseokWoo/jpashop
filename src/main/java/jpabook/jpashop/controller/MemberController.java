@@ -1,5 +1,6 @@
 package jpabook.jpashop.controller;
 
+import jakarta.validation.Valid;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
@@ -7,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -26,7 +26,7 @@ public class MemberController {
     }
 
     @PostMapping("/members/new")
-    public String create(@Validated MemberForm form, BindingResult result) {
+    public String create(@Valid MemberForm form, BindingResult result) {
 
         if (result.hasErrors()) {
             return "members/createMemberForm";
