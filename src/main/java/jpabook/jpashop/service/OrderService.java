@@ -51,7 +51,7 @@ public class OrderService {
     /**
      * 주문 취소
      */
-    @Transactional
+    @Transactional // commit이 되면 JPA는 flush를 날린다.(= 영속성 컨텍스트에 있는 엔티티 중에 변경된 것을 찾아 update 쿼리를 만들어 DB에 update한다.
     public void cancelOrder(Long orderId) {
         //주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);
